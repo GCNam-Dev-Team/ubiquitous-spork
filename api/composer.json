@@ -1,0 +1,17 @@
+{
+    "name": "nessy/api",
+    "autoload": {
+        "psr-4": {
+            "Nessy\\Api\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nessy",
+            "email": "nessynathingo@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.7"
+    }
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gondwana Rate Checker</title>
+
+    <!-- Bootstrap CSS for Navbar -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Semantic UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+
+    <!-- Fonts and Custom CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="custom.css">
+
+    <!-- Semantic UI Calendar CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.min.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-shadow">
+        <a class="navbar-brand ml-5" href="#">
+            <img src="assets/Gondwana-Collection-Logo-1.webp" alt="Gondwana Logo" height="45">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <span class="navbar-text h3 ">Gondwana Rate Checker</span>
+        </div>
+    </nav>
+
+    <div class="ui container mt-4">
+
+        <h3 class=" h3 mr-lg-5">Your Journey Begins Here</h3>
+        <h4>Fill in the form below</h4>
+        <div class="ui grid stackable">
+            <!-- Form Column -->
+            <div class="eight wide column">
+                <div class="ui card fluid">
+                    <div class="content">
+                        <form id="rateForm" class="ui tiny form">
+                            <div class="field">
+                                <label for="unitName">Unit Name</label>
+                                <input type="text" id="unitName" placeholder="Unit Name" required>
+                            </div>
+                            <div class="field">
+                                <label for="arrival">Arrival</label>
+                                <div class="ui calendar">
+                                    <div class="ui input left icon">
+                                        <i class="calendar icon"></i>
+                                        <input type="text" class="datepicker" id="arrival"
+                                            placeholder="Arrival (dd-mm-yyyy)" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="departure">Departure</label>
+                                <div class="ui calendar">
+                                    <div class="ui input left icon">
+                                        <i class="calendar icon"></i>
+                                        <input type="text" class="datepicker" id="departure"
+                                            placeholder="Departure (dd-mm-yyyy)" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="occupants">Occupants</label>
+                                <input type="number" id="occupants" placeholder="Occupants" required>
+                            </div>
+                            <div class="field">
+                                <label for="ages">Ages</label>
+                                <input type="text" id="ages" placeholder="Ages (comma separated)" required>
+                            </div>
+                            <button type="submit" class="ui button"
+                                style="background-color: #CA9765; color: #FEFEFF;">Get
+                                Rates</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Column -->
+
+            <div class="eight wide column">
+                <div class="ui card fluid">
+                    <div class="content">
+                        <!-- <h4>Results</h4> -->
+                        <div id="results">
+                            <!-- Display results -->
+                            <h4>Results will show here...</h4>
+                        </div>
+                        <div class="text-center" id="loader" style="display: none;">
+                            <div class="ui active inline loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.ui.calendar').calendar({
+                type: 'date',
+                formatter: {
+                    date: function (date, settings) {
+                        if (!date) return '';
+                        var day = date.getDate();
+                        var month = date.getMonth() + 1;
+                        var year = date.getFullYear();
+                        return day + '-' + month + '-' + year;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
