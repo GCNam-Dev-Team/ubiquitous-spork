@@ -113,7 +113,7 @@ $(document).ready(function () {
             success: function (data) {
                 const response = jQuery.parseJSON(data);
                 const json_result = JSON.parse(data);
-                alert('data: ' + json_result['Legs'][0]['Deposit Breakdown'][0]['Due Amount']);
+                
                 onResponse(json_result);
                 updateResult(json_result)
             },
