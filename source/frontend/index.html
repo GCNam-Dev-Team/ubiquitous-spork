@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Checker</title>
+
+    <!-- Include Bootstrap CSS for Navbar -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Include Semantic UI CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+
+    <!-- Include Google Fonts and Custom CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="custom.css">
+
+    <!-- Include Semantic UI Calendar CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.min.css">
+
+    <!-- Inline Styles -->
+    <style>
+        .banner-background {
+            background-image: url('https://gondwana-collection.com/hs-fs/hubfs/Gondwana%20Website/Experiences/Zambezi%20Region/Zambezi%20Experience%20(9).jpg?width=800&name=Zambezi%20Experience%20(9).jpg');
+            background-size: cover;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner-background">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-shadow">
+            <a class="navbar-brand ml-5" href="#">
+                <img src="assets/Gondwana-Collection-Logo-1.webp" alt="Gondwana Logo" height="45">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <span class="navbar-text h3 ">Rate Checker</span>
+            </div>
+        </nav>
+
+        <div class="ui container mt-4">
+            <h3 class=" h3 mr-lg-5">Your Journey Begins Here</h3>
+            <h4>Complete the form below</h4>
+            <div class="ui grid stackable">
+                <!-- Form Column -->
+                <div class="eight wide column">
+                    <div class="ui card fluid">
+                        <div class="content">
+                            <!-- Form -->
+                            <form id="rateForm" class="ui tiny form">
+                                <div class="field">
+                                    
+                                    <input type="text" id="unitName" placeholder="Unit Name" required>
+                                </div>
+                                <!-- Arrival Date -->
+                                <div class="field">
+                                    
+                                    <div class="ui calendar">
+                                        <div class="ui input left icon">
+                                            <i class="calendar icon"></i>
+                                            <input type="text" class="datepicker" id="arrival"
+                                                placeholder="Arrival (dd-mm-yyyy)" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Departure Date -->
+                                <div class="field">
+                                    
+                                    <div class="ui calendar">
+                                        <div class="ui input left icon">
+                                            <i class="calendar icon"></i>
+                                            <input type="text" class="datepicker" id="departure"
+                                                placeholder="Departure (dd-mm-yyyy)" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    
+                                    <input type="number" id="occupants" placeholder="Occupants" required>
+                                </div>
+                                <div class="field">
+                                    
+                                    <input type="text" id="ages" placeholder="Ages (comma separated)" required>
+                                </div>
+                                <!-- Submit Button -->
+                                <button type="submit" class="ui button"
+                                    style="background-color:#534807; color: #FEFEFF;">View Rates</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Column -->
+                <div class="eight wide column">
+                    <div class="ui card fluid">
+                        <div class="content">
+                            <!-- Results Display -->
+                            <div id="results">
+                                <p>Results will be displayed here...</p>
+                            </div>
+                            <!-- Loading Indicator -->
+                            <div class="text-center" id="loader" style="display: none;">
+                                <div class="ui active inline loader"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Include Semantic UI JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <!-- Include Semantic UI Calendar JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.min.js"></script>
+    <!-- Include Custom Script -->
+    <script src="script.js"></script>
+    <!-- Initialize Semantic UI Calendar -->
+    <script>
+        $(document).ready(function () {
+            $('.ui.calendar').calendar({
+                type: 'date',
+                formatter: {
+                    date: function (date, settings) {
+                        if (!date) return '';
+                        var day = date.getDate();
+                        var month = date.getMonth() + 1;
+                        var year = date.getFullYear();
+                        return day + '-' + month + '-' + year;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
