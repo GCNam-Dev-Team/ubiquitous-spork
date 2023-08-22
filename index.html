@@ -493,10 +493,28 @@ p{
                 // Display error message in result section
                 resultDiv.innerHTML = `<p class="error">${data.error}</p>`;
             } else {
+                var adultCount = 0;
+                var childCount = 0;
+                var tolaRate = 0;
+    
+              for (let index = 0; index < data["Guest"].length; index++) {
+                if(data["Guest"][index] == "Adult"){
+                    adultCount++
+                }
+                if(data["Guest"][index] == "Child"){
+                    childCount++
+                }
+              }
+
+              tolaRate = adultCount * data["Rate"]  +  childCount * data["Rate"] / 2 
+
+              console.log("tosT",tolaRate)
                 // Display result on the page
                 resultDiv.innerHTML = `
                     <h2>Unit Name: ${data["Unit Name"]}</h2>
-                    <p>Rate: ${data["Rate"]}</p>
+                    <p>Adults Rate: ${data["Rate"] } </p>
+                    <p>Children Rate: ${data["Rate"] / 2 } </p>
+                    <p>Total Rate: ${tolaRate} </p>
                     <p>Date Range: ${data["Date Range"]}</p>
                     <p>Availability: ${data["Availability"]}</p>
                 `;

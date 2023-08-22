@@ -31,6 +31,7 @@ $obtainedRates = [
     "Unit Name" => $payload["Unit Name"],
     "Rate" => 150, // Sample rate
     "Date Range" => $convertedPayload["Arrival"] . " - " . $convertedPayload["Departure"],
+    "Guest"=> $convertedPayload["Guests"],
     "Availability" => "Available"
 ];
 
